@@ -1,2 +1,2 @@
 # ports
-An archive of homebrew game ports to the Nintendo Switch.
+An archive of community-made game ports for the Nintendo Switch.
