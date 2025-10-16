@@ -1,0 +1,10 @@
+{
+  "name": "Perfect Dark",
+  "icon": "icons/pd.png",
+  "color": "#263643",
+  "author": "fgsfdsfgs",
+  "version": "-latest",
+  "description": "work in progress port of n64decomp/perfect_dark to modern platforms",
+  "source": "https://github.com/fgsfdsfgs/perfect_dark",
+  "download": "https://files.catbox.moe/n55ogw.zip"
+}

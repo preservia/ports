@@ -1,0 +1,10 @@
+{
+  "name": "Starship",
+  "icon": "icons/starship.png",
+  "color": "#211C82",
+  "author": "HarbourMasters",
+  "version": "2.0.0",
+  "description": "Starship is a port of Star Fox 64 to Nintendo Switch with support for widescreen, higher frame-rate, and more.",
+  "source": "https://github.com/HarbourMasters/Starship",
+  "download": "https://files.catbox.moe/sak166.zip"
+}

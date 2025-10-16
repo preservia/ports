@@ -1,0 +1,10 @@
+{
+  "name": "Space Cadet Pinball",
+  "icon": "icons/pinball.png",
+  "color": "#1E3255",
+  "author": "averne",
+  "version": "1.1.1",
+  "description": "Reverse engineering of '3D Pinball for Windows – Space Cadet', a game bundled with Windows.",
+  "source": "https://github.com/averne/SpaceCadetPinball-NX",
+  "download": "https://files.catbox.moe/9chcxi.zip"
+}

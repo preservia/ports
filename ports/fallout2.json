@@ -1,0 +1,10 @@
+{
+  "name": "Fallout 2: CE",
+  "icon": "icons/fallout2.png",
+  "color": "#417031",
+  "author": "ryandeering",
+  "version": "1.1.0",
+  "description": "Fallout 2 for the Nintendo Switch. Homebrew port.",
+  "source": "https://github.com/ryandeering/fallout2-ce-switch",
+  "download": "https://archive.org/download/fallout_nx/fallout2.zip"
+}

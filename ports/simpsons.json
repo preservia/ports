@@ -1,0 +1,10 @@
+{
+  "name": "Simpsons: H&R",
+  "icon": "icons/simpsons.png",
+  "color": "#FFDF34",
+  "author": "ZenoArrows",
+  "version": "0.6.1",
+  "description": "Switch port of The Simpsons: Hit & Run original source code from 2003",
+  "source": "https://github.com/ZenoArrows/The-Simpsons-Hit-and-Run",
+  "download": "https://archive.org/download/simpsons_nx/simpsons.zip"
+}

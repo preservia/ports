@@ -1,0 +1,10 @@
+{
+  "name": "sm64ex_alo",
+  "icon": "icons/sm64.png",
+  "color": "#95BED4",
+  "author": "Vatuu, fgsfdsfgs, and KiritoDev",
+  "version": "-latest",
+  "description": "An extended custom version of Super Mario 64 with extra stuff made by yours truly. Based of sm64ex and updated to Refresh 16",
+  "source": "https://github.com/AloUltraExt/sm64ex-alo/tree/master",
+  "download": "https://files.catbox.moe/skl3pp.zip"
+}

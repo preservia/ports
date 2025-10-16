@@ -1,0 +1,10 @@
+{
+  "name": "Ship of Harkinian",
+  "icon": "icons/soh.png",
+  "color": "#789DF4",
+  "author": "HarbourMasters",
+  "version": "8.0.6",
+  "description": "Ship of Harkinian is a port of The Legend of Zelda: Ocarina of Time to modern platforms. It features many enhancements like widescreen support, higher frame-rates, and a built-in mod loader!",
+  "source": "https://www.shipofharkinian.com",
+  "download": "https://files.catbox.moe/sukhdd.zip"
+}

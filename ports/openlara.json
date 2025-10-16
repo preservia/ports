@@ -1,0 +1,10 @@
+{
+  "name": "OpenLara",
+  "icon": "icons/openlara.png",
+  "color": "#000000",
+  "author": "XProger",
+  "version": "8.01.21",
+  "description": "Classic Tomb Raider open-source engine",
+  "source": "https://github.com/XProger/OpenLara",
+  "download": "https://archive.org/download/openlara-nx/OpenLara_switch.zip"
+}

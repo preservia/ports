@@ -1,0 +1,10 @@
+{
+  "name": "max_nx",
+  "icon": "icons/max_nx.png",
+  "color": "#929191",
+  "author": "fgsfdsfgs",
+  "version": "1",
+  "description": "Nintendo Switch port of https://github.com/fgsfdsfgs/max_vita",
+  "source": "https://github.com/fgsfdsfgs/max_nx",
+  "download": "https://archive.org/download/maxpayne_nx/maxpaynenx.zip"
+}

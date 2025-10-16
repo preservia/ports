@@ -1,0 +1,10 @@
+{
+  "name": "xash3d-fwgs",
+  "icon": "icons/xash3d.png",
+  "color": "#F74843",
+  "author": "fgsfdsfgs",
+  "version": "-switch_newer",
+  "description": "Xash3D FWGS is a fork of Xash3D Engine by Unkle Mike with extended features and crossplatform.",
+  "source": "https://github.com/fgsfdsfgs/xash3d-fwgs",
+  "download": "https://archive.org/download/xash3d_nx/xash3d.zip"
+}
