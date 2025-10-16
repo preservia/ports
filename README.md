@@ -19,6 +19,7 @@ This repository serves as an expansive archive for Nintendo Switch homebrew port
 - Fallout: CE
 - Fallout 2: CE
 - OpenLara
+- Xash3D FWGS
 - Space Cadet Pinbal
 
 <div align="center">
