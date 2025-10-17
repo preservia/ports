@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Nintendo Switch Ports</title>
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@700&family=Golos+Text:wght@400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --green:#00DE50;
+  --bg:#fff;
+  --card-bg:rgba(255,255,255,0.5);
+  --text:#111;
+  --radius:38px;
+  --max-width:1200px;
+}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+.bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:calc(100vh + env(safe-area-inset-bottom));
+  z-index:-1;
+  background:linear-gradient(to bottom, var(--bg) 65%, var(--green) 115%);
+  padding-top:env(safe-area-inset-top);
+  overflow-y:visible;
+}
+
+.wrap{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:40px 40px 0;
+  display:flex;
+  flex-direction:column;
+  min-height:calc(100vh - 120px);
+  box-sizing:border-box;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:40px;
+}
+
+.title-block{ display:flex; flex-direction:column; align-items:flex-start; }
+
+h1{
+  font-family:'Zalando Sans Expanded',sans-serif;
+  font-weight:700;
+  font-size:50px;
+  color:#8c8c8c;
+  margin:0 0 8px 0;
+}
+
+#portCount{ font-weight:600; color:#999; font-size:20px; }
+
+.socials-desktop{ display:flex; align-items:flex-start; gap:24px; padding-top:10px; }
+.socials-mobile{ display:none; }
+
+.socials-desktop img,
+.socials-mobile img{
+  display:block;
+  width:38px;
+  height:38px;
+  cursor:pointer;
+  transition:transform .2s ease;
+  -webkit-user-drag:none;
+}
+.socials-desktop img:hover{ transform:scale(1.1); }
+
+@media (max-width:700px){
+  .socials-desktop{ display:none; }
+  .socials-mobile{ display:flex; justify-content:center; gap:24px; margin-bottom:60px; }
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  gap:32px;
+  justify-content:space-between;
+  opacity:0;
+  transform:translateY(40px);
+  animation:slideUp .9s cubic-bezier(.25,.8,.25,1) forwards;
+}
+@keyframes slideUp{ to{ opacity:1; transform:translateY(0); } }
+
+.card{
+  background:var(--card-bg);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  border-radius:var(--radius);
+  padding:22px;
+  text-align:center;
+  cursor:pointer;
+  transition:transform .18s ease, background .3s ease;
+  outline:none;
+  border:none;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+}
+.card:hover{ transform:scale(1.05); }
+
+.card .meta,
+.meta{
+  font-size:16px;
+  font-weight:600;
+  color:#222;
+  opacity:.75;
+  margin-top:4px;
+}
+.icon{
+  width:110px;
+  height:110px;
+  object-fit:cover;
+  border-radius:20px;
+  margin:0 auto 14px;
+}
+.title{
+  font-family:'Zalando Sans Expanded',sans-serif;
+  font-weight:700;
+  font-size:22px;
+  margin:6px 0;
+}
+.ver{ font-weight:700; color:#111; margin-top:6px; }
+
+.backdrop{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:rgba(0,0,0,0);
+  backdrop-filter:blur(0);
+  -webkit-backdrop-filter:blur(0);
+  opacity:0;
+  pointer-events:none;
+  z-index:60;
+  transition:backdrop-filter .35s ease-in-out, -webkit-backdrop-filter .35s ease-in-out, background-color .35s ease-in-out, opacity .35s ease-in-out;
+}
+.backdrop.show{
+  pointer-events:all;
+  background-color:rgba(0,0,0,.25);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  opacity:1;
+}
+
+.details{
+  background:rgba(255,255,255,0.9);
+  border-radius:40px;
+  padding:32px;
+  text-align:center;
+  max-width:600px;
+  width:90%;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  transform:scale(.92);
+  opacity:0;
+}
+.details.show{ animation:popIn .35s ease-in-out forwards; }
+.details.hide{ animation:popOut .35s ease-in-out forwards; }
+@keyframes popIn{ from{ transform:scale(.92); opacity:0 } to{ transform:scale(1); opacity:1 } }
+@keyframes popOut{ from{ transform:scale(1); opacity:1 } to{ transform:scale(.92); opacity:0 } }
+
+.close-btn{
+  position:absolute;
+  top:22px;
+  left:24px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  background:#d9d9d9 !important;
+  color:#111 !important;
+  -webkit-appearance:none;
+  appearance:none;
+  font-size:22px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s ease;
+}
+.close-btn:hover{ background:#cfcfcf; }
+
+.details img{ width:120px; height:120px; border-radius:20px; object-fit:cover; margin-bottom:12px; }
+.details h2{
+  font-family:'Zalando Sans Expanded',sans-serif;
+  font-weight:700;
+  font-size:28px;
+  margin:0;
+}
+.buttons{ margin:20px 0 10px; display:flex; justify-content:center; gap:12px; }
+.btn{
+  border:none;
+  border-radius:30px;
+  padding:10px 26px;
+  font-family:'Zalando Sans Expanded',sans-serif;
+  font-weight:700;
+  font-size:18px;
+  cursor:pointer;
+  transition:transform .1s ease, background .15s ease;
+}
+.btn:active{ transform:translateY(1px); }
+.btn.source{ background:#d9d9d9; color:#111; }
+.btn.download{ color:#fff; }
+.desc{
+  font-family:'Golos Text',sans-serif;
+  font-weight:400;
+  font-size:18px !important;
+  line-height:1.4;
+  color:#222;
+  max-width:540px;
+  padding-top:10px;
+  margin:10px auto 0;
+}
+
+.preservia-logo{
+  display:block;
+  margin:80px auto 40px;
+  width:clamp(200px, 38vw, 420px);
+  opacity:.85;
+  pointer-events:none;
+  animation:fadeInLogo 1s ease 1.2s forwards;
+}
+@keyframes fadeInLogo{ to{ opacity:.85 } }
+
+@media(max-width:600px){
+  .wrap{ padding:40px 24px; }
+  h1{ font-size:42px; }
+  .details{ padding:24px; }
+  .desc{ font-size:24px; }
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <header>
+    <div class="title-block">
+      <h1>Nintendo Switch Ports</h1>
+      <div id="portCount">0 Ports Available</div>
+    </div>
+
+    <div class="socials-desktop">
+      <img src="assets/twitter.png" alt="Twitter" class="social-twitter">
+      <img src="assets/github.png" alt="GitHub" class="social-github">
+    </div>
+  </header>
+
+  <main>
+    <section class="grid" id="grid"></section>
+  </main>
+</div>
+
+<img src="assets/logo.png" alt="Preservia" class="preservia-logo">
+
+<div class="socials socials-mobile">
+  <img src="assets/twitter.png" alt="Twitter" class="social-twitter">
+  <img src="assets/github.png" alt="GitHub" class="social-github">
+</div>
+
+<div class="backdrop" id="backdrop">
+  <div class="details" id="detailsBox">
+    <button class="close-btn" id="closeBtn">✕</button>
+    <img id="detailIcon" alt="">
+    <h2 id="detailTitle">Title</h2>
+    <div class="meta"><span id="detailAuthor"></span> • <span id="detailVersion"></span></div>
+    <div class="buttons">
+      <button class="btn source" id="sourceBtn">Source</button>
+      <button class="btn download" id="downloadBtn">Download</button>
+    </div>
+    <div class="desc" id="detailDesc"></div>
+  </div>
+</div>
+
+<script>
+const grid = document.getElementById('grid');
+const portCount = document.getElementById('portCount');
+
+const twitterLinks = document.querySelectorAll('.social-twitter');
+const githubLinks = document.querySelectorAll('.social-github');
+
+twitterLinks.forEach(el => el.addEventListener('click', () => window.open('https://twitter.com/Preservia_', '_blank')));
+githubLinks.forEach(el => el.addEventListener('click', () => window.open('https://github.com/preservia', '_blank')));
+
+const backdrop = document.getElementById('backdrop');
+const detailsBox = document.getElementById('detailsBox');
+const closeBtn = document.getElementById('closeBtn');
+const detailIcon = document.getElementById('detailIcon');
+const detailTitle = document.getElementById('detailTitle');
+const detailAuthor = document.getElementById('detailAuthor');
+const detailVersion = document.getElementById('detailVersion');
+const detailDesc = document.getElementById('detailDesc');
+const downloadBtn = document.getElementById('downloadBtn');
+const sourceBtn = document.getElementById('sourceBtn');
+
+async function fetchJSON(path){
+  try{
+    const res = await fetch(path, { cache: "no-cache" });
+    if(!res.ok) throw new Error(res.status);
+    return await res.json();
+  }catch(err){
+    console.warn("Failed to load", path, err);
+    return null;
+  }
+}
+
+function makeCard(port){
+  const el = document.createElement('button');
+  el.className = 'card';
+
+  const img = document.createElement('img');
+  img.className = 'icon';
+  img.src = port.icon || '';
+  el.appendChild(img);
+
+  const title = document.createElement('div');
+  title.className = 'title';
+  title.textContent = port.name || '';
+  if(port.color) title.style.color = port.color;
+  el.appendChild(title);
+
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  meta.textContent = port.author || '';
+  el.appendChild(meta);
+
+  el.addEventListener('click', () => openDetails(port));
+  return el;
+}
+
+function openDetails(port){
+  detailIcon.src = port.icon || '';
+  detailTitle.textContent = port.name || '';
+  detailAuthor.textContent = port.author || '';
+  detailVersion.textContent = port.version ? 'v' + port.version : '';
+  detailDesc.textContent = port.description || '';
+  detailTitle.style.color = port.color || '#000';
+  downloadBtn.style.background = port.color || '#555';
+
+  sourceBtn.onclick = () => port.source && window.open(port.source, '_blank');
+  downloadBtn.onclick = () => port.download && window.open(port.download, '_blank');
+
+  backdrop.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  detailsBox.classList.remove('show', 'hide');
+  detailsBox.style.opacity = '0';
+  detailsBox.style.transform = 'scale(.92)';
+  setTimeout(() => detailsBox.classList.add('show'), 350);
+}
+
+function hideDetails(){
+  detailsBox.classList.remove('show');
+  detailsBox.classList.add('hide');
+  setTimeout(() => {
+    backdrop.classList.remove('show');
+    document.body.style.overflow = '';
+  }, 350);
+}
+
+closeBtn.addEventListener('click', hideDetails);
+backdrop.addEventListener('click', e => { if(e.target === backdrop) hideDetails(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && backdrop.classList.contains('show')) hideDetails(); });
+
+(async function init(){
+  const manifest = await fetchJSON('ports.json');
+  if(!manifest){
+    grid.innerHTML = '<div style="padding:40px;color:#666">Could not load ports.json</div>';
+    return;
+  }
+
+  const slugs = Array.isArray(manifest) ? manifest : Object.values(manifest);
+  const loaded = [];
+  for(const slug of slugs){
+    const data = await fetchJSON('ports/' + slug + '.json');
+    if(data) loaded.push(data);
+  }
+
+  grid.innerHTML = '';
+  loaded.forEach(p => grid.appendChild(makeCard(p)));
+  portCount.textContent = `${loaded.length} Port${loaded.length === 1 ? '' : 's'} Available`;
+})();
+</script>
+
+<div class="bg"></div>
+</body>
+</html>
